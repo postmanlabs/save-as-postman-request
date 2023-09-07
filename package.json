@@ -1,0 +1,33 @@
+{
+  "name": "save-as-postman-request",
+  "version": "1.0.0",
+  "description": "Command line utility to process curl responses and create postman a request on a collection using the Postman API",
+  "main": "savePostmanRequest.js",
+  "scripts": {
+    "lint": "eslint .",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/postmanlabs/save-as-postman-request.git"
+  },
+  "keywords": [
+    "Postman",
+    "API"
+  ],
+  "author": "David Espí Hernández",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/postmanlabs/save-as-postman-request/issues"
+  },
+  "homepage": "https://github.com/postmanlabs/save-as-postman-request#readme",
+  "dependencies": {
+    "axios": "^1.5.0",
+    "http-status-codes": "^2.2.0",
+    "lodash": "^4.17.21",
+    "yargs": "^17.7.2"
+  },
+  "devDependencies": {
+    "jest": "^29.6.4"
+  }
+}
