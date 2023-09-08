@@ -62,6 +62,8 @@ const curlOutput = `*   Trying 52.21.146.215:443...
 < set-cookie: sails.sid=s%3AtJZudB_4xJv_In5EygauD85pLsxs8OEg.DTvHZGFPgUJRgv6mynPwcYSIAqui6zh%2FXORqNw2%2F3sA; Path=/; HttpOnly
 < 
 { [467 bytes data]
+
+100   490  100   468  100    22    900     42 --:--:-- --:--:-- --:--:--   955
 * Connection #0 to host postman-echo.com left intact
 {
   "args": {},

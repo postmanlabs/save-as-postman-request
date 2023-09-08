@@ -17,7 +17,7 @@ class CurlOuputParser {
     this.authority = null;
     this.requestHeaders = [];
     this.requestBody = process.env.REQUEST_BODY || null;
-    this.responseStatusCode = null;
+    this.responseStatusCode = 200;
     this.responseHeaders = [];
     this.responseBody = "";
   }
@@ -69,25 +69,28 @@ class CurlOuputParser {
     let isFirstOutputLine = true;
     let isLastOutputLine = false;
     lines.forEach((line) => {
-      if (line.startsWith("* h2h3 [:")) {
-        this.parseRequestUrlField(line);
-      } else if (line.startsWith(">")) {
-        this.parseRequestHeader(line);
-      } else if (line.startsWith("<")) {
-        if (isFirstOutputLine) {
-          this.parseResponseStatusCode(line);
-          isFirstOutputLine = false;
-        } else {
-          if (line.trim() === "<") {
-            isLastOutputLine = true;
+      const isLogLine = line.match(/^\s*\d+ .+/i);
+      if (line && !isLogLine) {
+        if (line.startsWith("* h2h3 [:")) {
+          this.parseRequestUrlField(line);
+        } else if (line.startsWith(">")) {
+          this.parseRequestHeader(line);
+        } else if (line.startsWith("<")) {
+          if (isFirstOutputLine) {
+            this.parseResponseStatusCode(line);
+            isFirstOutputLine = false;
           } else {
-            this.parseResponseHeader(line);
+            if (line.trim() === "<") {
+              isLastOutputLine = true;
+            } else {
+              this.parseResponseHeader(line);
+            }
           }
-        }
-      } else {
-        if (isLastOutputLine) {
-          if (!line.startsWith("*") && !line.startsWith("{ [")) {
-            this.responseBody += trimEnd(line, "%") + "\n";
+        } else {
+          if (isLastOutputLine) {
+            if (!line.startsWith("*") && !line.startsWith("{ [")) {
+              this.responseBody += trimEnd(line, "%") + "\n";
+            }
           }
         }
       }
@@ -101,6 +104,17 @@ class CurlOuputParser {
     return (
       this.scheme && this.authority && this.path && this.responseStatusCode
     );
+  }
+
+  getRequestBody() {
+    if (
+      this.method &&
+      (this.method.toUpperCase() === "POST" ||
+        this.method.toUpperCase() === "PUT")
+    ) {
+      return this.requestBody;
+    }
+    return null;
   }
 
   toPostmanResponse(responseName) {
@@ -125,7 +139,7 @@ class CurlOuputParser {
       method: this.method,
       headers: this.requestHeaders,
       dataMode: "raw",
-      rawModeData: this.requestBody,
+      rawModeData: this.getRequestBody(),
       dataOptions: {
         raw: {
           language: "json",

@@ -1,0 +1,77 @@
+Note: Unnecessary use of -X or --request, GET is already inferred.
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0*   Trying 54.225.121.67:443...
+* Connected to postman-echo.com (54.225.121.67) port 443 (#0)
+* ALPN: offers h2,http/1.1
+* (304) (OUT), TLS handshake, Client hello (1):
+} [321 bytes data]
+*  CAfile: /etc/ssl/cert.pem
+*  CApath: none
+* (304) (IN), TLS handshake, Server hello (2):
+{ [100 bytes data]
+* TLSv1.2 (IN), TLS handshake, Certificate (11):
+{ [4968 bytes data]
+* TLSv1.2 (IN), TLS handshake, Server key exchange (12):
+{ [333 bytes data]
+* TLSv1.2 (IN), TLS handshake, Server finished (14):
+{ [4 bytes data]
+* TLSv1.2 (OUT), TLS handshake, Client key exchange (16):
+} [70 bytes data]
+* TLSv1.2 (OUT), TLS change cipher, Change cipher spec (1):
+} [1 bytes data]
+* TLSv1.2 (OUT), TLS handshake, Finished (20):
+} [16 bytes data]
+* TLSv1.2 (IN), TLS change cipher, Change cipher spec (1):
+{ [1 bytes data]
+* TLSv1.2 (IN), TLS handshake, Finished (20):
+{ [16 bytes data]
+* SSL connection using TLSv1.2 / ECDHE-RSA-AES128-GCM-SHA256
+* ALPN: server accepted h2
+* Server certificate:
+*  subject: CN=postman-echo.com
+*  start date: Jun 14 00:00:00 2023 GMT
+*  expire date: Jul 12 23:59:59 2024 GMT
+*  subjectAltName: host "postman-echo.com" matched cert's "postman-echo.com"
+*  issuer: C=US; O=Amazon; CN=Amazon RSA 2048 M02
+*  SSL certificate verify ok.
+* using HTTP/2
+* h2h3 [:method: GET]
+* h2h3 [:path: /get?param=value]
+* h2h3 [:scheme: https]
+* h2h3 [:authority: postman-echo.com]
+* h2h3 [user-agent: curl/7.88.1]
+* h2h3 [accept: */*]
+* h2h3 [content-type: application/json]
+* Using Stream ID: 1 (easy handle 0x7fcdc6010a00)
+> GET /get?param=value HTTP/2
+> Host: postman-echo.com
+> user-agent: curl/7.88.1
+> accept: */*
+> content-type: application/json
+> 
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0< HTTP/2 200 
+< date: Thu, 07 Sep 2023 13:16:02 GMT
+< content-type: application/json; charset=utf-8
+< content-length: 370
+< etag: W/"172-GDbDAS2r5X4Ypw2ia9AUhtyIyhk"
+< set-cookie: sails.sid=s%3A23szD8AzOKHt8Vs7dMzU4hjUHqqA1LeX.x8Jbnx4BEVHgzajknZdH%2BqxW7Pctx47m%2FlduU5Q4TAI; Path=/; HttpOnly
+< 
+{ [369 bytes data]
+100   370  100   370    0     0    607      0 --:--:-- --:--:-- --:--:--   614
+* Connection #0 to host postman-echo.com left intact
+{
+  "args": {
+    "param": "value"
+  },
+  "headers": {
+    "x-forwarded-proto": "https",
+    "x-forwarded-port": "443",
+    "host": "postman-echo.com",
+    "x-amzn-trace-id": "Root=1-64f9cd12-62f18f3a048796d345508073",
+    "user-agent": "curl/7.88.1",
+    "accept": "*/*",
+    "content-type": "application/json"
+  },
+  "url": "https://postman-echo.com/get?param=value"
+}
