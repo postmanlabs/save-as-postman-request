@@ -10,9 +10,9 @@ This code demonstrates how to use the [Postman API](https://www.postman.com/post
 
 The goal of this repository is to demonstrate how the Collection Items endpoints can be used to modify a Postman collection adding requests and responses programmatically, without having to perform a full PUT of the collection.
 
-In order to do that, we have created a (small Postman API wrapper)[api/apiClient.js] that enables users to create collection requests and responses. We have also created a Javascript file called (savePostmanRequest.js)[savePostmanRequest.js] that can be executed as a shell script.
+In order to do that, we have created a [small Postman API wrapper](api/apiClient.js) that enables users to create collection requests and responses. We have also created a Javascript file called [savePostmanRequest.js](savePostmanRequest.js) that can be executed as a shell script.
 
-> NOTE: You need a valid (Postman API key)[https://learning.postman.com/docs/developer/postman-api/authentication/] saved in an environment variable called `POSTMAN_API_KEY` in order to execute the command.
+> NOTE: You need a valid [Postman API key](https://learning.postman.com/docs/developer/postman-api/authentication/) saved in an environment variable called `POSTMAN_API_KEY` in order to execute the command.
 
 ```shell
 export POSTMAN_API_KEY=PMAK_your_key
